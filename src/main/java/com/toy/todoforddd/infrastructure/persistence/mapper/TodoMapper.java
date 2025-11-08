@@ -2,6 +2,7 @@ package com.toy.todoforddd.infrastructure.persistence.mapper;
 
 import com.toy.todoforddd.domain.model.Todo;
 import com.toy.todoforddd.infrastructure.persistence.entity.TodoEntity;
+import com.toy.todoforddd.presentation.controller.todo.dto.TodoCompletedRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,9 +21,7 @@ public class TodoMapper {
         return TodoEntity.builder()
                 .id(todo.getId())
                 .authorId(todo.getAuthorId())
-                .title(todo.getTitle())
                 .content(todo.getContent())
-                .pw(todo.getPw())
                 .completed(todo.getCompleted())
                 .createdAt(todo.getCreatedAt())
                 .updatedAt(todo.getUpdatedAt())
@@ -40,9 +39,7 @@ public class TodoMapper {
         return Todo.builder()
                 .id(todoEntity.getId())
                 .authorId(todoEntity.getAuthorId())
-                .title(todoEntity.getTitle())
                 .content(todoEntity.getContent())
-                .pw(todoEntity.getPw())
                 .completed(todoEntity.getCompleted())
                 .createdAt(todoEntity.getCreatedAt())
                 .updatedAt(todoEntity.getUpdatedAt())

@@ -24,16 +24,15 @@ public class User {
                 .build();
     }
 
-    // User는 Post를 생성할 수 있다.
-    public Todo createPost(String title, String content, String pw, LocalDateTime createAt) {
+    // User는 Todo를 생성할 수 있다.
+    public Todo createTodo(String content, LocalDateTime createAt) {
         return Todo.builder()
-                .title(title)
                 .content(content)
-                .pw(pw)
                 .createdAt(createAt)
                 .completed(false)
                 .authorId(this.id)
                 .build();
     }
+
 
 }

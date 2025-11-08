@@ -37,20 +37,16 @@ class UserTest {
                 .build();
 
         TodoCreateRequest todoCreateRequest = new TodoCreateRequest();
-        todoCreateRequest.setTitle("test");
         todoCreateRequest.setContent("test");
-        todoCreateRequest.setPw("tester");
         todoCreateRequest.setAuthorId(tester.getId());
         LocalDateTime createdAt = LocalDateTime.now();
         // When
 
-        Todo todo = tester.createPost(todoCreateRequest.getTitle(), todoCreateRequest.getContent(), todoCreateRequest.getPw(), createdAt);
+        Todo todo = tester.createTodo(todoCreateRequest.getContent(), createdAt);
 
         // Then
         assertThat(todo.getAuthorId()).isEqualTo(todoCreateRequest.getAuthorId());
-        assertThat(todo.getTitle()).isEqualTo(todoCreateRequest.getTitle());
         assertThat(todo.getContent()).isEqualTo(todoCreateRequest.getContent());
-        assertThat(todo.getPw()).isEqualTo(todoCreateRequest.getPw());
         assertThat(todo.getCreatedAt()).isEqualTo(createdAt);
         assertThat(todo.getCompleted()).isFalse();
 

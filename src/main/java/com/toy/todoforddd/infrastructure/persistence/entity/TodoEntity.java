@@ -16,9 +16,7 @@ public class TodoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long authorId;
-    private String title;
     private String content;
-    private String pw;
     private Boolean completed;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
