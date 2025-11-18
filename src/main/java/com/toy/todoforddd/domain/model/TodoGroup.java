@@ -5,19 +5,18 @@ import com.toy.todoforddd.domain.model.key.TodoGroupId;
 import com.toy.todoforddd.domain.model.key.TodoId;
 import com.toy.todoforddd.domain.model.key.UserId;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Builder
 public class TodoGroup {
     private TodoGroupId todoGroupId; // TodoGroup 아이디
-    private Set<UserId> userIds;
-    private Set<TodoId> todoIds;
+    private List<UserId> userIds;
+    private List<TodoId> todoIds;
     private UserId createUserId;
 
     private LocalDateTime createdAt;
@@ -32,13 +31,13 @@ public class TodoGroup {
         if (createdAt == null) {
             throw new TodoGroupException("생성시간이 없습니다.");
         }
-        HashSet<UserId> userIds = new HashSet<>();
+        List<UserId> userIds = new ArrayList<>();
         userIds.add(createUserId);
         return TodoGroup.builder()
                 .todoGroupId(null) // DB 생성
                 .userIds(userIds)
                 .createUserId(createUserId)
-                .todoIds(new HashSet<>())
+                .todoIds(new ArrayList<>())
                 .userIds(userIds)
                 .createdAt(createdAt)
                 .build();
@@ -58,7 +57,7 @@ public class TodoGroup {
 
 
         // 새로운 Set 생성 (기존 Set은 불변)
-        Set<TodoId> newTodoIds = new HashSet<>(this.todoIds);
+        List<TodoId> newTodoIds = new ArrayList<>(this.todoIds);
         newTodoIds.add(todoId);
 
 
@@ -79,7 +78,7 @@ public class TodoGroup {
         }
 
 
-        Set<TodoId> newTodoIds = new HashSet<>(this.todoIds);
+        List<TodoId> newTodoIds = new ArrayList<>(this.todoIds);
         newTodoIds.remove(todoId);
 
         return TodoGroup.builder()
@@ -98,7 +97,7 @@ public class TodoGroup {
             throw new TodoGroupException("userId는 비어있을 수 없습니다.");
         }
 
-        HashSet<UserId> newUserIds = new HashSet<>(this.userIds);
+        List<UserId> newUserIds = new ArrayList<>(this.userIds);
         newUserIds.add(userId);
 
         return TodoGroup.builder()
@@ -121,7 +120,7 @@ public class TodoGroup {
             throw new TodoGroupException("생성자를 추방 할 수 없습니다.");
         }
 
-        HashSet<UserId> newUserIds = new HashSet<>(this.userIds);
+        List<UserId> newUserIds = new ArrayList<>(this.userIds);
         newUserIds.remove(userId);
 
         return TodoGroup.builder()
