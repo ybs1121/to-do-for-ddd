@@ -3,5 +3,9 @@ package com.toy.todoforddd.infrastructure.persistence.repository.todogroup;
 import com.toy.todoforddd.infrastructure.persistence.entity.TodoGroupUserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface TodoGroupUserRepository extends JpaRepository<TodoGroupUserEntity,Long> {
+
+    List<TodoGroupUserEntity> findByTodoGroupId(Long todoGroupId);
 }
